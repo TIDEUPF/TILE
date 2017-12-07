@@ -1,0 +1,171 @@
+@import "https://fonts.googleapis.com/css?family=Roboto";
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #f6f6f6;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    background-color: #fff;
+}
+
+.step-wrapper {
+    padding: 10px 0;
+    display: none;
+}
+.step-wrapper.active {
+    display: block;
+}
+
+.step-indicator {
+    border-collapse: separate;
+    display: table;
+    margin-left: 0px;
+    position: relative;
+    table-layout: fixed;
+    text-align: center;
+    vertical-align: middle;
+    padding-left: 0;
+    padding-top: 20px;
+    margin-bottom: 0px;
+}
+.step-indicator li {
+    display: table-cell;
+    position: relative;
+    float: none;
+    padding: 0;
+    width: 1%;
+}
+.step-indicator li:after {
+    background-color: #ccc;
+    content: "";
+    display: block;
+    height: 1px;
+    position: absolute;
+    width: 100%;
+    top: 32px;
+}
+.step-indicator li:after {
+    left: 50%;
+}
+.step-indicator li:last-child:after {
+    display: none;
+}
+.step-indicator li.active .step {
+    border-color: #4183D7;
+    color: #4183D7;
+}
+.step-indicator li.active .caption {
+    color: #4183D7;
+}
+.step-indicator li.complete:after {
+    background-color: #87D37C;
+}
+.step-indicator li.complete .step {
+    border-color: #87D37C;
+    color: #87D37C;
+}
+.step-indicator li.complete .caption {
+    color: #87D37C;
+}
+.step-indicator .step {
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    color: #ccc;
+    font-size: 24px;
+    height: 64px;
+    line-height: 64px;
+    margin: 0 auto;
+    position: relative;
+    width: 64px;
+    z-index: 1;
+}
+.step-indicator .step:hover {
+    cursor: pointer;
+}
+.step-indicator .caption {
+    color: #ccc;
+    padding: 11px 16px;
+}
+
+.h3, h3{
+    color: #5dbddd;
+    margin-bottom: 20px;
+}
+.h4, h4{
+    margin-top: 1em;
+    width: fit-content;
+    margin-right: 4px;
+    display: inline-block;
+}
+.h6, h6{
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.textarea_resize{
+    resize: none;
+    overflow: auto;
+}
+.tab{
+    margin-left: 3em;
+    margin-top:0.2em;
+}
+.form-subgroup1{
+    width:48%;
+    vertical-align: top;
+    display:inline-block;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+.form-group{
+    margin-bottom: 0.5rem;
+}
+.form-subgroup2{
+    width:48%;
+    height: 145px;
+    vertical-align: top;
+    display:inline-block;
+    position: relative;
+    margin-top:1em;
+    margin-left:0.5em;
+}
+
+.long{
+    width:100%;
+}
+.form-subgroup3{
+    width:38%;
+    height: 75px;
+    vertical-align: top;
+    display:inline-block;
+    position: relative;
+    margin-top:0.2em;
+    margin-left:0.5em;
+}
+.right{
+    /*float: right;*/
+    margin-left: 30px;
+}
+
+.short_input{
+    width: 200px;
+    display: inline-block;
+    position: relative;
+    margin-left: 4px;
+}
+.short_label{
+    width: 200px;
+
+}
+
+.list-inline{
+    margin-top:10px;
+}
+
+.space{
+    width:100%;
+}

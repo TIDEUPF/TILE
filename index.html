@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inquiry tool</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/content.css" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="assets/js/fileSaver.js"> </script>
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <section>
+            <div class="wizard">
+                <div class="wizard-inner">
+                    <div class="connecting-line"></div>
+                    <ul class="nav nav-tabs" role="tablist">
+
+                        <li role="presentation" class="active">
+                            <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1: Problem and question(s)">
+                            <span class="round-tab">
+                                <i class="fa fa-question-circle-o"></i>
+                            </span>
+                            </a>
+                        </li>
+
+                        <li role="presentation" class="">
+                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2: Design intervention and evaluation">
+                            <span class="round-tab">
+                                <i class="fa fa-pencil-square-o"></i>
+                            </span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="">
+                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3: Collected data and analysis">
+                            <span class="round-tab">
+                                <i class="fa fa-bar-chart"></i>
+                            </span>
+                            </a>
+                        </li>
+
+                        <li role="presentation" class="">
+                            <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Step 4: Reflection and proposed changes">
+                            <span class="round-tab">
+                                <i class="fa fa-repeat"></i>
+                            </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <form role="form">
+                    <div class="tab-content">
+                        <div class="tab-pane active" role="tabpanel" id="step1">
+                            <h3>Step 1: Problem and question(s)</h3>
+
+                            <h4>Context</h4>
+                            <i class="fa fa-info-circle " id="i_context" title="Characteristics of the environment in which you want to implement your intervention."> </i>
+                            <div class="form-group tab">
+                                <label for="students" class="short_label" >Number of students</label>
+                                <input type="number" class="form-control short_input" id="students" aria-describedby="emailHelp" placeholder="0">
+                                <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                            </div>
+                            <div class="form-group tab">
+                                <label for="subject" class="short_label">Subject</label>
+                                <input type="text" class="form-control short_input" id="subject" placeholder="Enter subject">
+                            </div>
+                            <div class="form-group tab">
+                                <label for="info" class="short_label">Other information</label>
+                                <input type="text" class="form-control short_input" id="info" placeholder="Enter other information">
+                            </div>
+                            <div class="form-subgroup1">
+                                <h4>Problem in the teaching practice</h4>
+                                <i class="fa fa-info-circle " id="i_problem" title="Problem or challenge in your teaching practice which you want to overcome."> </i>
+                                <!--<label for="problem"></label>-->
+                                <textarea class="form-control textarea_resize" id="problem" rows="5"></textarea>
+                            </div>
+                            <div class="form-subgroup1 right">
+                                <h4>Question(s) for evaluation</h4>
+                                <i class="fa fa-info-circle " id="i_questions" title="What are you trying to achieve with your intervention? Question(s) to monitor your design and the implementation with students."> </i>
+                                <!--<label for="questions"></label>-->
+                                <textarea class="form-control textarea_resize" id="questions" rows="5"></textarea>
+                            </div>
+
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-primary next-step">Next</button></li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="step2">
+                            <h3>Step 2: Design intervention and evaluation</h3>
+
+                            <div class="form-group">
+                                <div class="form-subgroup1">
+                                    <h4>Intervention</h4>
+                                    <i class="fa fa-info-circle " id="i_intervention" title="Briefly describe your intervention and choose tools for your implementation."> </i>
+                                    <!--<label for="questions"></label>-->
+                                    <textarea class="form-control textarea_resize" id="intervention" rows="6"></textarea>
+                                </div>
+
+                                <div class="form-subgroup1 right">
+                                    <h4>Supporting tools for intervention</h4>
+
+                                    <div class="form-subgroup2">
+                                        <h6>ILDE Tools</h6>
+                                        <input type="checkbox" name="ILDEtool" id="pyramidapp" value="PyramidApp" ><a href="https://ilde2.upf.edu/dolmen/pg/lds/neweditor/pyramid/" target="_blank">PyramidApp</a><br>
+                                        <input type="checkbox" name="ILDEtool" id="ldfeedback" value="Ld-Feedback" ><a href="https://ilde2.upf.edu/dolmen/feedback" target="_blank">Ld-Feedback</a><br>
+                                        <input type="checkbox" name="ILDEtool" id="googleforms" value="GoogleForms"><a href="https://ilde2.upf.edu/dolmen/pg/lds/neweditor/google_forms/template/google_forms" target="_blank">Google form</a><br>
+                                    </div>
+                                    <div class="form-subgroup2">
+                                        <h6>Other tools</h6>
+                                        <input type="checkbox" name="OTHERtool" id="kahoot" value="Kahoot"><a href="https://create.kahoot.it/login" target="_blank">Kahoot</a><br>
+                                        <input type="checkbox" name="OTHERtool" id="edpuzzle" value="Edpuzzle" ><a href=" https://edpuzzle.com/" target="_blank">Edpuzzle</a><br>
+                                        <input type="checkbox" name="OTHERtool" id="padlet" value="Padlet"><a href="https://padlet.com" target="_blank">Padlet</a><br>
+                                        <input type="checkbox" name="OTHERtool" id="socrative" value="Socrative"><a href="https://www.socrative.com/" target="_blank">Socrative</a><br>
+                                        <input type="text" name="OTHERtoolAnalytics" id="other_tools" placeholder="Enter other tools" value=""><br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-subgroup1">
+                                    <h4>Evaluation</h4>
+                                    <i class="fa fa-info-circle " id="i_evaluation" title="Briefly describe your evaluation (student satisfaction, participation, assessment, problems) and choose tools for your monitoring."> </i>
+                                    <!--<label for="questions"></label>-->
+                                    <textarea class="form-control textarea_resize" id="evaluation" rows="6"></textarea>
+                                </div>
+                                <div class="form-subgroup1 right">
+                                    <h4 class="space">Supporting tools for evaluation</h4>
+
+                                    <div class="form-subgroup2">
+                                        <h6>Analytics Integrated in ILDE</h6>
+                                        <input type="checkbox" name="ILDEtoolAnalytics" id="pyramidapp_analytics" value="PyramidApp_Analytics" >PyramidApp Analytics<br>
+                                        <input type="checkbox" name="ILDEtoolAnalytics" id="ldfeedback_analytics" value="Ld-Feedback_Analytics" >Ld-Feedback Analytics<br>
+                                        <input type="checkbox" name="ILDEtoolAnalytics" id="googleforms_analytics" value="GoogleForms_Analytics">Google form responses<br>
+                                    </div>
+                                    <div class="form-subgroup2">
+                                        <h6>Other analytics</h6>
+                                        <input type="checkbox" name="OTHERtoolAnalytics" id="kahoot_analytics" value="Kahoot" >Kahoot results .csv<br>
+                                        <input type="checkbox" name="OTHERtoolAnalytics" id="edpuzzle_analytics" value="Edpuzzle" >Edpuzzle results .csv<br>
+                                        <input type="checkbox" name="OTHERtoolAnalytics" id="padlet_analytics" value="Padlet">Padlet results<br>
+                                        <input type="checkbox" name="OTHERtoolAnalytics" id="socrative_analytics" value="Socrative">Socrative results .csv or .pdf<br>
+                                        <input type="text" name="OTHERtoolAnalytics" id="other_tools_analytics" placeholder="Enter other analytics" value=""><br>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-primary prev-step">Previous</button></li>
+                                <li><button type="button" class="btn btn-primary next-step">Next</button></li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="step3">
+                            <h3>Step 3: Collected data and analysis</h3>
+
+                            <div class="form-group">
+                                <div class="form-subgroup1">
+                                    <h4>PyramidApp analytics</h4>
+                                    <i class="fa fa-info-circle " id="i_pyramidapp" title="Write an analysis about the collected data shown in the Activity tab of the PyramidApp Tool."> </i>
+                                    <textarea class="form-control textarea_resize" id="pyramidapp_analytics_text" rows="5"></textarea>
+                                </div>
+
+                                <div class="form-subgroup1 right">
+                                    <h4>Ld-Feedback analytics</h4>
+                                    <i class="fa fa-info-circle " id="i_ldfeedback" title="Write an analysis of the collected data shown in the Feedback tab of the design."> </i>
+                                    <textarea class="form-control textarea_resize" id="ldfeedback_analytics_text" rows="5"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-subgroup1">
+                                    <h4>Google form responses</h4>
+                                    <i class="fa fa-info-circle " id="i_googleforms" title="Provide a link to the google form responses and write an analysis about the collected data."> </i>
+                                    <textarea class="form-control textarea_resize" id="googleforms_analytics_text" rows="5"></textarea>
+                                </div>
+
+                                <div class="form-subgroup1 right">
+                                    <h4>Other analysis</h4>
+                                    <i class="fa fa-info-circle " id="i_other" title="Write your observation notes and analysis of any other collected data."> </i>
+                                    <textarea class="form-control textarea_resize" id="other_analysis_text" rows="5"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="File1">Files input</label>
+                                <input type="file" class="form-control-file" id="File1" aria-describedby="fileHelp">
+                                <small id="fileHelp" class="form-text text-muted">Upload here any .csv or .xlsx file with data (e.g. Kahoot, Edpuzzle, Socrative results).</small>
+                                <div id="file1-info">
+                                    <div class="filename"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <input type="file" class="form-control-file" id="File2" aria-describedby="fileHelp">
+                                <small id="fileHelp1" class="form-text text-muted">Upload here any .csv or .xlsx file with data (e.g. Kahoot, Edpuzzle, Socrative results).</small>
+                            </div>
+
+                            <div class="form-group">
+
+                                <input type="file" class="form-control-file" id="File3" aria-describedby="fileHelp">
+                                <small id="fileHelp2" class="form-text text-muted">Upload here any .csv or .xlsx file with data (e.g. Kahoot, Edpuzzle, Socrative results).</small>
+                            </div>
+
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-primary prev-step">Previous</button></li>
+                                <li><button type="button" class="btn btn-primary btn-info-full next-step">Next</button></li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="complete">
+                            <h3>Step 4: Reflection and proposed changes</h3>
+
+                            <div class="form-group">
+                                <h4>Reflection about the results in connection with the Step 1</h4>
+                                <i class="fa fa-info-circle " id="i_reflection" title="Write about your results and experience according to your context, problem and question(s)."> </i>
+                                <!--<label for="problem"></label>-->
+                                <textarea class="form-control textarea_resize" id="reflection" rows="4"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <h4>Proposed changes in the design based on the collected data</h4>
+                                <i class="fa fa-info-circle " id="i_changes" title="Explain changes and improvements for the design and its future implementations."> </i>
+                                <!--<label for="questions"></label>-->
+                                <textarea class="form-control textarea_resize" id="changes" rows="4"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <h4 class="long">Changes</h4>
+                                <div class="form-subgroup3">
+                                    <input type="checkbox" name="Changes" id="change_time" value="ControlTime">Control better the time<br>
+                                    <input type="checkbox" name="Changes" id="change_participation" value="MoreParticipation">Encourage more participation<br>
+                                    <input type="checkbox" name="Changes" id="change_instructions" value="MoreInstructions">Provide more instructions in the task<br>
+                                </div>
+                                <div class="form-subgroup3">
+                                <input type="text" name="Changes" id="change1" placeholder="Enter other changes" style="width:400px;" value=""><br>
+                                <input type="text" name="Changes" id="change2" placeholder="Enter other changes" style="width:400px;" value=""><br>
+                                <input type="text" name="Changes"  id="change3" placeholder="Enter other changes" style="width:400px;" value=""><br>
+                                </div>
+                            </div>
+
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-primary prev-step">Previous</button></li>
+                            </ul>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script type="text/javascript" src="assets/js/main.js"> </script>
+<script type="text/javascript" src="assets/js/viewMode.js"> </script>
+<script src="assets/js/database.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

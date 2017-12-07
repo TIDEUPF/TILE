@@ -1,0 +1,6 @@
+RewriteEngine on
+
+RewriteRule ^services\/ldshake\/ldsdoc\/([0-9]+)$ services/ldshake/ldsdoc/save.php?document_id=$1 [L,QSA]
+RewriteRule ^services\/ldshake\/ldsdoc\/([0-9]+)\/summary$ services/ldshake/ldsdoc/summary.php?document_id=$1 [L,QSA]
+RewriteRule ^services\/ldshake\/publish\/$ services/ldshake/ldsdoc/publish.php [L,QSA]
+RewriteRule ^services\/ldshake\.php\/activity_tracking\/?(.*)$ index.php?action=ldshake&ldshake_activity_tracking=1&$1 [L,QSA]

@@ -44,4 +44,10 @@ function readonly(state) { //state: true or false
         $('#change2').prop("disabled", state);
         $('#change3').prop("disabled", state);
 
+        //files
+    if(state) {
+        $('input[type=file]').hide();
+        $('[for=File1]').hide();
+        $('#fileHelp, #fileHelp2, #fileHelp3').hide();
+    }
 }

@@ -257,28 +257,32 @@ function load_data(data) {
     if(data.documents.File1) {
         $('#file1-info .filename')
             .text(data.documents.File1.filename)
-            .on('click', function() {
-                fetch(data.documents.File1.data).then(function(response) {
+            .on('click', function () {
+                fetch(data.documents.File1.data).then(function (response) {
                     return response.blob();
-                }).then(function(myBlob) {
+                }).then(function (myBlob) {
                     saveAs(myBlob, data.documents.File1.filename);
                 });
             });
+    }
+    if(data.documents.File1) {
         $('#file2-info .filename')
             .text(data.documents.File2.filename)
-            .on('click', function() {
-                fetch(data.documents.File2.data).then(function(response) {
+            .on('click', function () {
+                fetch(data.documents.File2.data).then(function (response) {
                     return response.blob();
-                }).then(function(myBlob) {
+                }).then(function (myBlob) {
                     saveAs(myBlob, data.documents.File2.filename);
                 });
             });
+    }
+    if(data.documents.File1) {
         $('#file3-info .filename')
             .text(data.documents.File3.filename)
-            .on('click', function() {
-                fetch(data.documents.File3.data).then(function(response) {
+            .on('click', function () {
+                fetch(data.documents.File3.data).then(function (response) {
                     return response.blob();
-                }).then(function(myBlob) {
+                }).then(function (myBlob) {
                     saveAs(myBlob, data.documents.File3.filename);
                 });
             });

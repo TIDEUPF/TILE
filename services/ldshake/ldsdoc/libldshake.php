@@ -72,6 +72,9 @@ SQL;
         var ldshake_initial_data = {$ldshake_data};
         var ldshake_doc_id = "{$ldshake_doc_id}";
         var ldshake_sectoken = "{$ldshake_sectoken}";
+        $(function() {
+            readonly(true);
+        });
     </script>
 HTML;
 

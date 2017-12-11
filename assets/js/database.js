@@ -131,7 +131,8 @@ function saveData(ldshake) {
             allData["documents"] = result;
 
             if(ldshake) {
-                ldshake_async_save(allData);
+                ldshake["data"] = allData;
+                ldshake_async_save(ldshake);
                 return;
             }
 
@@ -210,6 +211,80 @@ function handleFiles(file) {
     }
 }
 
+function load_data(data) {
+    $('#students').val(data.students);
+    $('#subject').val(data.subject);
+    $('#info').val(data.info);
+    $('#problem').val(data.problem);
+    $('#questions').val(data.questions);
+    $('#intervention').val(data.intervention);
+    //intervention_checklist
+    $('#pyramidapp').prop("checked", data.tools_intervention_checklist.pyramidapp);
+    $('#ldfeedback').prop("checked", data.tools_intervention_checklist.ldfeedback);
+    $('#googleforms').prop("checked", data.tools_intervention_checklist.googleform);
+    $('#kahoot').prop("checked", data.tools_intervention_checklist.kahoot);
+    $('#edpuzzle').prop("checked", data.tools_intervention_checklist.edpuzzle);
+    $('#padlet').prop("checked", data.tools_intervention_checklist.padlet);
+    $('#socrative').prop("checked", data.tools_intervention_checklist.socrative);
+    $('#other_tools').val(data.tools_intervention_checklist.other);
+    $('#evaluation').val(data.evaluation);
+    //evaluation_checklist
+    $('#pyramidapp_analytics').prop("checked", data.tools_evaluation_checklist.pyramidapp);
+    $('#ldfeedback_analytics').prop("checked", data.tools_evaluation_checklist.ldfeedback);
+    $('#googleforms_analytics').prop("checked", data.tools_evaluation_checklist.googleform);
+    $('#kahoot_analytics').prop("checked", data.tools_evaluation_checklist.kahoot);
+    $('#edpuzzle_analytics').prop("checked", data.tools_evaluation_checklist.edpuzzle);
+    $('#padlet_analytics').prop("checked", data.tools_evaluation_checklist.padlet);
+    $('#socrative_analytics').prop("checked", data.tools_evaluation_checklist.socrative);
+    $('#other_tools_analytics').val(data.tools_evaluation_checklist.other);
+    $('#pyramidapp_analytics_text').val(data.pyramidapp_analytics);
+    $('#ldfeedback_analytics_text').val(data.ldfeedback_analytics);
+    $('#googleforms_analytics_text').val(data.googleform_analytics);
+    $('#other_analysis_text').val(data.other_analytics);
+
+    $('#reflection').val(data.reflection);
+    $('#changes').val(data.changes);
+    //changes_checklist
+    $('#change_time').prop("checked", data.changes_checklist.controltime);
+    $('#change_participation').prop("checked", data.changes_checklist.participation);
+    $('#change_instructions').prop("checked", data.changes_checklist.instructions);
+    $('#change1').val(data.changes_checklist.otherchange1);
+    $('#change2').val(data.changes_checklist.otherchange2);
+    $('#change3').val(data.changes_checklist.otherchange3);
+
+    // pujada de documents
+
+    if(data.documents.File1) {
+        $('#file1-info .filename')
+            .text(data.documents.File1.filename)
+            .on('click', function() {
+                fetch(data.documents.File1.data).then(function(response) {
+                    return response.blob();
+                }).then(function(myBlob) {
+                    saveAs(myBlob, data.documents.File1.filename);
+                });
+            });
+        $('#file2-info .filename')
+            .text(data.documents.File2.filename)
+            .on('click', function() {
+                fetch(data.documents.File2.data).then(function(response) {
+                    return response.blob();
+                }).then(function(myBlob) {
+                    saveAs(myBlob, data.documents.File2.filename);
+                });
+            });
+        $('#file3-info .filename')
+            .text(data.documents.File3.filename)
+            .on('click', function() {
+                fetch(data.documents.File3.data).then(function(response) {
+                    return response.blob();
+                }).then(function(myBlob) {
+                    saveAs(myBlob, data.documents.File3.filename);
+                });
+            });
+    }
+}
+
 // set #lds_editor_iframe[presave=true] in the ILDE iframe
 window.addEventListener('message', function (event) {
     function ldshakeSendSaveReadyMessage(data) {
@@ -231,11 +306,13 @@ window.addEventListener('message', function (event) {
     console.log("message received");
     console.log(event);
     if (event.data.type == 'ldshake_presave') {
-        saveData(true);
+        saveData({
+            "event_data" : event.data
+        });
     }
 }, false);
 
-function ldshake_async_save(data) {
+function ldshake_async_save(ldshake) {
     function ldshakeSendSaveReadyMessage(data) {
         if(!ldshake_event_save_data) return;
 
@@ -252,7 +329,8 @@ function ldshake_async_save(data) {
         console.log("pyramid: save_error");
     }
 
-    ldshake_event_save_data = event.data;
+    ldshake_event_save_data = ldshake.event_data;
+    data = ldshake.data;
 
     //ajax save
     try {
@@ -275,3 +353,14 @@ function ldshake_async_save(data) {
         ldshakeSendSaveReadyMessage(ldshake_event_save_data);
     });
 }
+
+$(function() {
+    if(typeof ldshake_initial_data === "undefined")
+        return;
+
+    if(!ldshake_initial_data)
+        return;
+
+    load_data(ldshake_initial_data);
+});
+

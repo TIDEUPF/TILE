@@ -50,14 +50,36 @@ function send_binary_data($data) {
 }
 
 function view_non_live_summary($document_id) {
-    $non_live_html = true;
+    global $link;
 
-    ob_start();
-    include __DIR__ . '/../actions/summary.php';
-    $html = ob_get_contents();
-    ob_end_clean();
+    $ldshake_doc_id = $document_id;
+    $ldshake_sectoken = "0";
 
-    return $html;
+    $sql = <<<SQL
+    select * from `ldshake_editor` where `doc_id` = '{$ldshake_doc_id}'
+SQL;
+
+    $flow_result = mysqli_query($link, $sql);
+    if(!(mysqli_num_rows($flow_result) > 0)) {
+        throw new Exception("Document not found");
+    }
+
+    $row = mysqli_fetch_assoc($flow_result);
+    $ldshake_data = $row['json'] === "{}" ? "null" : $row['json'];
+
+    $js_script = <<<HTML
+    <script>
+        var ldshake_initial_data = {$ldshake_data};
+        var ldshake_doc_id = "{$ldshake_doc_id}";
+        var ldshake_sectoken = "{$ldshake_sectoken}";
+    </script>
+HTML;
+
+    $index = file_get_contents(__DIR__ . "/../../../index.html");
+
+    $index = str_replace("</body>", $js_script . "</body>", $index);
+
+    return $index;
 }
 
 function check_user_ldshake_flow() {
@@ -73,6 +95,10 @@ function check_user_ldshake_flow() {
 
 function create_zippped_summary($html) {
     $zip_filepath = tempnam(sys_get_temp_dir(), 'pyramid');
+
+    if(copy(__DIR__ . '/../../../assets/summary/summary.zip', $zip_filepath) === false){
+        throw new Exception("Summary template missing.");
+    }
 
     $zipped_summary_object = new \ZipArchive();
     $zipped_summary_object->open($zip_filepath, \ZipArchive::CREATE);

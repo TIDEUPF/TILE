@@ -69,7 +69,7 @@ function saveData(ldshake) {
         "File3": 1
     }
 
-    var result = {
+    var result = typeof data.documents === "object" ? data.documents : {
         "File1" : null,
         "File2" : null,
         "File3" : null
@@ -265,7 +265,7 @@ function load_data(data) {
                 });
             });
     }
-    if(data.documents.File1) {
+    if(data.documents.File2) {
         $('#file2-info .filename')
             .text(data.documents.File2.filename)
             .on('click', function () {
@@ -276,7 +276,7 @@ function load_data(data) {
                 });
             });
     }
-    if(data.documents.File1) {
+    if(data.documents.File3) {
         $('#file3-info .filename')
             .text(data.documents.File3.filename)
             .on('click', function () {
@@ -358,13 +358,17 @@ function ldshake_async_save(ldshake) {
     });
 }
 
+data = {};
+
+//ldshake data load
 $(function() {
-    if(typeof ldshake_initial_data === "undefined")
+    if(typeof ldshake_initial_data !== "object")
         return;
 
-    if(!ldshake_initial_data)
+    if(!Object.keys(ldshake_initial_data).length)
         return;
 
+    data = ldshake_initial_data;
     load_data(ldshake_initial_data);
 });
 

@@ -31,6 +31,11 @@ $(document).ready(function () {
         prevTab($active);
 
     });
+
+    //file change
+    $('input[type=file]').on('change', function() {
+        $(this).parent().find('.filename').empty();
+    });
 });
 
 function nextTab(elem) {

@@ -140,3 +140,7 @@ span.round-tab:hover {
         left: 35%;
     }
 }
+
+.filename {
+    cursor: pointer;
+}
